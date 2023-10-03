@@ -60,22 +60,22 @@ let Nodes = {
 
         this.points = [];
 
-        var width, height, i, j;
+        let width, height, i, j;
 
-        var colors = this.bgContextPixelData.data;
+        let colors = this.bgContextPixelData.data;
 
         for( i = 0; i < this.canvas.height; i += this.density ) {
 
             for ( j = 0; j < this.canvas.width; j += this.density ) {
 
-                var pixelPosition = ( j + i * this.bgContextPixelData.width ) * 4;
+                let pixelPosition = ( j + i * this.bgContextPixelData.width ) * 4;
 
                 // Dont use whiteish pixels
                 if ( colors[pixelPosition] > 200 && (colors[pixelPosition + 1]) > 200 && (colors[pixelPosition + 2]) > 200 || colors[pixelPosition + 3] === 0 ) {
                     continue;
                 }
 
-                var color = 'rgba(' + colors[pixelPosition] + ',' + colors[pixelPosition + 1] + ',' + colors[pixelPosition + 2] + ',' + '1)';
+                let color = 'rgba(' + colors[pixelPosition] + ',' + colors[pixelPosition + 1] + ',' + colors[pixelPosition + 2] + ',' + '1)';
                 color = '#4880b0'
                 this.points.push( { x: j, y: i, originalX: j, originalY: i, color: color } );
 
@@ -85,7 +85,7 @@ let Nodes = {
 
     updatePoints: function() {
 
-        var i, currentPoint, theta, distance;
+        let i, currentPoint, theta, distance;
 
         for (i = 0; i < this.points.length; i++ ){
 
@@ -110,7 +110,7 @@ let Nodes = {
 
     drawLines: function() {
 
-        var i, j, currentPoint, otherPoint, distance, lineThickness;
+        let i, j, currentPoint, otherPoint, distance, lineThickness;
 
         for ( i = 0; i < this.points.length; i++ ) {
 
@@ -146,7 +146,7 @@ let Nodes = {
 
     drawPoints: function() {
 
-        var i, currentPoint;
+        let i, currentPoint;
 
         for ( i = 0; i < this.points.length; i++ ) {
 
@@ -198,12 +198,12 @@ let Nodes = {
         this.bgCanvas.width = this.canvas.width;
         this.bgCanvas.height = this.canvas.height;
 
-        var newWidth, newHeight;
+        let newWidth, newHeight;
 
         // If the image is too big for the screen... scale it down.
         if ( this.bgImage.width > this.bgCanvas.width - 100 || this.bgImage.height > this.bgCanvas.height - 100) {
 
-            var maxRatio = Math.max( this.bgImage.width / (this.bgCanvas.width - 100) , this.bgImage.height / (this.bgCanvas.height - 100) );
+            let maxRatio = Math.max( this.bgImage.width / (this.bgCanvas.width - 100) , this.bgImage.height / (this.bgCanvas.height - 100) );
             newWidth = this.bgImage.width / maxRatio;
             newHeight = this.bgImage.height / maxRatio;
 
